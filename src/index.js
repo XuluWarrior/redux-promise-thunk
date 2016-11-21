@@ -14,7 +14,7 @@ function createPromiseThunk(type, promiseCreator, metaCreator) {
   const getMeta = isFunction(metaCreator) ? metaCreator : getMetaByStep(metaCreator);
 
   function createActionForStep(step, payload) {
-    return createAction(getType(step), payload, getMeta(step));
+    return createAction(getType(step), payload, getMeta(step, type));
   }
 
   return data => dispatch => {
@@ -59,7 +59,7 @@ const getTypeMap = type => {
   }
 };
 
-const getMetaByStep = meta => step => ({asyncStep: step, ...meta});
+const getMetaByStep = meta => (step, type) => ({asyncType: type, asyncStep: step, ...meta});
 
 function createAction(type, payload, meta) {
   const action = {
