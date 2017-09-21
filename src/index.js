@@ -17,10 +17,10 @@ function createPromiseThunk(type, promiseCreator, metaCreator) {
     return createAction(getType(step), payload, getMeta(step, type));
   }
 
-  return data => dispatch => {
+  return data => (dispatch, getState) => {
     dispatch(createActionForStep(START, data));
 
-    const promise = promiseCreator.call(this, data);
+    const promise = promiseCreator.call(this, data, dispatch, getState);
 
     if (promise && promise.then) {
       promise.then((result)=>{
