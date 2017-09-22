@@ -23,7 +23,7 @@ function createPromiseThunk(type, promiseCreator, metaCreator) {
     const promise = promiseCreator.call(this, data, dispatch, getState);
 
     if (promise && promise.then) {
-      promise.then((result)=>{
+      return promise.then((result)=>{
         dispatch(createActionForStep(COMPLETED, result));
       }, (err)=>{
         dispatch(createActionForStep(FAILED, err));
