@@ -25,8 +25,10 @@ function createPromiseThunk(type, promiseCreator, metaCreator) {
     if (promise && promise.then) {
       return promise.then((result)=>{
         dispatch(createActionForStep(COMPLETED, result));
+        return result;
       }, (err)=>{
         dispatch(createActionForStep(FAILED, err));
+        throw err;
       });
     } else {
       throw new TypeError('The return of promiseCreator must be a promise object');
