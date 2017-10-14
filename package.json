@@ -23,7 +23,8 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "redux-thunk": "*"
+    "redux-thunk": "*",
+    "immutable": "^3.8.2"
   },
   "devDependencies": {
     "babel": "^5.8.34",

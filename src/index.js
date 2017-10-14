@@ -1,11 +1,5 @@
-const START = 'START';
-const COMPLETED = 'COMPLETED';
-const FAILED = 'FAILED';
-let steps = {
-  [START]: 'START',
-  [COMPLETED]: 'COMPLETED',
-  [FAILED]: 'FAILED'
-};
+import helpers from './helpers';
+import {START, COMPLETED, FAILED, steps, setupSteps} from './steps';
 
 function createPromiseThunk(type, promiseCreator, metaCreator) {
 
@@ -35,8 +29,6 @@ function createPromiseThunk(type, promiseCreator, metaCreator) {
     }
   };
 }
-
-const setupSteps = customSteps => steps = {steps, ...customSteps};
 
 const isArray = Array.isArray;//todo: polyfill
 const isFunction = target => typeof target === 'function';
@@ -81,5 +73,6 @@ function createAction(type, payload, meta) {
 export default {
   createPromiseThunk,
   setupSteps,
-  steps
+  steps,
+  helpers
 };
