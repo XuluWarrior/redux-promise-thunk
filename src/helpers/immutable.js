@@ -49,6 +49,10 @@ export function actionCompletedSuccessfully(actionResult) {
     return actionResult && actionResult.status === AsyncActionState.UPDATED;
 }
 
+export function actionIsPending(actionResult) {
+    return actionResult && actionResult.status === AsyncActionState.UPDATING;
+}
+
 export function actionError(actionResult) {
     return actionResult && actionResult.status === AsyncActionState.ERROR ? actionResult.error : null;
 }
