@@ -35,10 +35,10 @@ export function reduceAsyncAction(state, action, storePath) {
       error: null
     }));
   case FAILED:
-    return state.setIn(storePath, actionStatusMap.merge({
+    return state.setIn(storePath, actionStatusMap.merge(new Immutable.Map({
       status: AsyncActionState.ERROR,
       error: action.payload
-    }));
+    })));
   default:
     return state;
   }
