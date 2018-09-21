@@ -11,3 +11,4 @@ try {
 
 
 export default helpers;
+module.exports = helpers;
