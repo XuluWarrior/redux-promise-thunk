@@ -69,10 +69,11 @@ function createAction(type, payload, meta) {
   return action;
 }
 
-
-export default {
-  createPromiseThunk,
-  setupSteps,
-  steps,
-  helpers
+module.exports = {
+    createPromiseThunk,
+    setupSteps,
+    steps,
+    helpers
 };
+
+export default module.exports;
