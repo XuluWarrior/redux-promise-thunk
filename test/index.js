@@ -22,11 +22,12 @@ describe('redux promise thunk: ', function() {
       });
     }
 
-    beforeEach(function() {
+    beforeEach(function(done) {
       actionHandler = createPromiseThunk(actionName, function(data) {
         return Promise.resolve(data);
       });
       dispatch = sinon.spy();
+      done();
     });
 
     it('should return handler function which accept one argument', function() {
