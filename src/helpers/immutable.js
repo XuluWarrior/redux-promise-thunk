@@ -35,9 +35,14 @@ export function reduceAsyncAction(state, action, storePath) {
       error: null
     }));
   case FAILED:
+    const serialializableError = JSON.parse(JSON.stringify({
+        message: action.payload.message,
+        stack: action.payload.stack,
+        ...action.payload
+    }));
     return state.setIn(storePath, actionStatusMap.merge(new Immutable.Map({
       status: AsyncActionState.ERROR,
-      error: action.payload
+      error: serialializableError
     })));
   default:
     return state;
